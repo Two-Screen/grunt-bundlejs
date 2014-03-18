@@ -1,0 +1,23 @@
+{
+  "name": "grunt-bundlejs",
+  "version": "0.0.0",
+  "description": "Bundle sources from script tags in a HTML file into a single file and update the HTML",
+  "main": "tasks/bundle-js.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2cashew/grunt-bundlejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2cashew/grunt-bundlejs/issues"
+  },
+  "homepage": "https://github.com/2cashew/grunt-bundlejs",
+  "dependencies": {
+    "cheerio": "0.13",
+    "uglify-js": "2"
+  }
+}
