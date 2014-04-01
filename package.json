@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/2cashew/grunt-bundlejs.git"
+    "url": "https://github.com/Two-Screen/grunt-bundlejs.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/2cashew/grunt-bundlejs/issues"
+    "url": "https://github.com/Two-Screen/grunt-bundlejs/issues"
   },
-  "homepage": "https://github.com/2cashew/grunt-bundlejs",
+  "homepage": "https://github.com/Two-Screen/grunt-bundlejs",
   "dependencies": {
     "cheerio": "0.13",
     "uglify-js": "2"
