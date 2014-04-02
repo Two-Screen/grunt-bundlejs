@@ -51,7 +51,7 @@ module.exports = function(grunt) {
     });
 
     var isUrlRe = /^\w+:\/\//;
-    function bundlejs(src, dest, options, callback) {
+    function bundlejs(src, dest, options) {
         var outBase = options.outBase || path.dirname(src);
         var base    = options.base    || path.dirname(src);
         var root    = options.root    || base;
