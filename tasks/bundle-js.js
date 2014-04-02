@@ -81,11 +81,15 @@ module.exports = function(grunt) {
             }
         });
 
-        var bundle = uglify.minify(files, {
-            mangle:   options.mangle,
-            compress: options.compress,
-            banner:   options.banner
-        });
+        var bundle;
+        if (options.compress) {
+            bundle = uglify.minify(files).code;
+        }
+        else {
+            bundle = files.map(function(file) {
+                return grunt.file.read(file);
+            }).join('\n');
+        }
 
         grunt.file.write(dest, bundle.code);
         grunt.verbose.writeln('Bundled ' + String(files.length).cyan + ' scripts into ' + dest.cyan);
