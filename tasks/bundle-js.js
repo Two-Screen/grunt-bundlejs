@@ -91,7 +91,7 @@ module.exports = function(grunt) {
             }).join('\n');
         }
 
-        grunt.file.write(dest, bundle.code);
+        grunt.file.write(dest, bundle);
         grunt.verbose.writeln('Bundled ' + String(files.length).cyan + ' scripts into ' + dest.cyan);
 
         scripts.remove();
