@@ -97,7 +97,8 @@ module.exports = function(grunt) {
         scripts.remove();
         $('body').append(
             $('<script/>')
-                .attr('src', path.relative(outBase, dest))
+                .attr('type', 'text/javascript')
+                .attr('src', path.relative(outBase, dest) + '?' + Date.now())
         );
         grunt.file.write(src, $.html());
         grunt.verbose.writeln('Rewrote ' + src.cyan);
