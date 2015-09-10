@@ -59,11 +59,17 @@ module.exports = function(grunt) {
         var html = grunt.file.read(src);
         var $ = cheerio.load(html);
 
-        var files = [];
+        var code = '';
         var scripts = $('script').filter(function() {
-            var s = $(this).attr('src');
+            var $this = $(this);
+            var s = $this.attr('src');
 
-            if (!s || isUrlRe.test(s))
+            if (!s) {
+                code += $this.text();
+                return true;
+            }
+
+            if (isUrlRe.test(s))
                 return false;
 
             var f = s;
@@ -73,7 +79,7 @@ module.exports = function(grunt) {
                 f = path.join(base, s);
 
             if (grunt.file.exists(f)) {
-                files.push(f);
+                code += grunt.file.read(f);
                 return true;
             }
             else {
@@ -81,18 +87,11 @@ module.exports = function(grunt) {
             }
         });
 
-        var bundle;
-        if (options.compress) {
-            bundle = uglify.minify(files).code;
-        }
-        else {
-            bundle = files.map(function(file) {
-                return grunt.file.read(file);
-            }).join('\n');
-        }
+        if (options.compress)
+            code = uglify.minify(code, { fromString: true }).code;
 
-        grunt.file.write(dest, bundle);
-        grunt.verbose.writeln('Bundled ' + String(files.length).cyan + ' scripts into ' + dest.cyan);
+        grunt.file.write(dest, code);
+        grunt.verbose.writeln('Created JS bundle ' + dest.cyan);
 
         scripts.remove();
         $('body').append(
